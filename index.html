@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/e8da74773e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="scr/style.css" />
+    <title>Weather Forecast</title>
+  </head>
+  <body>
+    <div class="container p-5">
+      <header class="text-center">
+        <form class="search-form" id="search-form">
+        <div class="row">
+          <div class="col-9">
+            <div class="input-group">
+              <input
+                type="search"
+                class="form-control rounded text-dark"
+                placeholder="Enter location"
+                id="search-text-input"
+              />
+              <input
+                type="submit"
+                value="Forecast"
+                class="btn btn-outline-primary"
+              />
+            </div>
+          </div>
+        </form>
+          <div class="col-3">
+            <button type="button" class="btn btn-primary">Current</button>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="row">
+          <div class="col text-center mt-5 mb-5">
+            <div class="card border-0">
+              <div class="card-body">
+                <h1 class="card-title text-primary mb-6">
+              
+                </h1>
+                <p class="card-text">
+                   <span class="today-weather font-weight-bold">
+                    <span class="temperature-c"></span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c">°C</a> |
+                      <a href="#" id="event-link-f">°F</a></span
+                    ></span
+                  >
+                  <br />
+                  <span class="today-date">8/2</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-center mb-2">5-day forecast</h2>
+        <div class="forecast">
+          <div class="row">
+            <div class="col-sm mb-3">
+              <div class="card forecast-card shadow-sm">
+                <div class="card-body text-center">
+                  <div class="card-title1">8/3</div>
+                  <p class="card-text">
+                    <i
+                      class="fa-solid fa-cloud-sun text-primary forecast-icon"
+                    ></i>
+                  </p>
+                  <p class="font-weight-bold">
+                    <span class="temperature-c1">23</span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c1">°C</a> |
+                      <a href="#" id="event-link-f1">°F</a></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm mb-3">
+              <div class="card forecast-card shadow-sm">
+                <div class="card-body text-center">
+                  <div class="card-title2">8/4</div>
+                  <p class="card-text">
+                    <i
+                      class="fa-solid fa-cloud-showers-heavy text-primary forecast-icon"
+                    ></i>
+                  </p>
+                  <p class="font-weight-bold">
+                    <span class="temperature-c2">23</span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c2">°C</a> |
+                      <a href="#" id="event-link-f2">°F</a></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm mb-3">
+              <div class="card forecast-card shadow-sm">
+                <div class="card-body text-center">
+                  <div class="card-title3">8/5</div>
+                  <p class="card-text">
+                    <i class="fa-solid fa-sun text-primary forecast-icon"></i>
+                  </p>
+                  <p class="font-weight-bold">
+                    <span class="temperature-c3">23</span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c3">°C</a> |
+                      <a href="#" id="event-link-f3">°F</a></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm mb-3">
+              <div class="card forecast-card shadow-sm">
+                <div class="card-body text-center">
+                  <div class="card-title4">8/6</div>
+                  <p class="card-text">
+                    <i class="fa-solid fa-sun text-primary forecast-icon"></i>
+                  </p>
+                  <p class="font-weight-bold">
+                    <span class="temperature-c4">23</span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c4">°C</a> |
+                      <a href="#" id="event-link-f4">°F</a></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="card forecast-card shadow-sm">
+                <div class="card-body text-center">
+                  <div class="card-title5">8/7</div>
+                  <p class="card-text">
+                    <i class="fa-solid fa-sun text-primary forecast-icon"></i>
+                  </p>
+                  <p class="font-weight-bold">
+                    <span class="temperature-c5">23</span>
+                    <span class="units"
+                      ><a href="#" id="event-link-c5">°C</a> |
+                      <a href="#" id="event-link-f5">°F</a></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="text-secondary text-center mt-5">
+        © 2022 Alexandra Shapkina
+      </footer>
+    </div>
+    <script type="text/javascript" src="scr/index.js"></script>
+  </body>
+</html>
