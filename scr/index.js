@@ -43,6 +43,12 @@ function showForecast(now) {
   document.querySelector(".temperature-c").innerHTML = Math.round(
     now.data.main.temp
   );
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${now.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", now.data.weather[0].description);
 }
 
 function search(city) {
@@ -59,8 +65,6 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-search("New York");
 
 //Current location
 
@@ -230,3 +234,5 @@ function switchTempC5(event) {
 }
 temp = document.querySelector("#event-link-c5");
 temp.addEventListener("click", switchTempC5);
+
+search("New York");
