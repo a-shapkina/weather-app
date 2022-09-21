@@ -39,6 +39,8 @@ todayDate.innerHTML = currentDate(now);
 //Search location
 
 function showForecast(now) {
+  let link = document.querySelector(".temperature-c");
+  celsiusTemperature = now.data.main.temp;
   document.querySelector("h1").innerHTML = now.data.name;
   document.querySelector(".temperature-c").innerHTML = Math.round(
     now.data.main.temp
@@ -94,7 +96,7 @@ button.addEventListener("click", getCurrentPosition);
 function switchTempF(event) {
   event.preventDefault();
   let link = document.querySelector(".temperature-c");
-  link.innerHTML = Math.round((23 * 9) / 5 + 32);
+  link.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 }
 let temp = document.querySelector("#event-link-f");
 temp.addEventListener("click", switchTempF);
@@ -103,10 +105,12 @@ temp.addEventListener("click", switchTempF);
 function switchTempC(event) {
   event.preventDefault();
   let link = document.querySelector(".temperature-c");
-  link.innerHTML = 23;
+  link.innerHTML = Math.round(celsiusTemperature);
 }
 temp = document.querySelector("#event-link-c");
 temp.addEventListener("click", switchTempC);
+
+let celsiusTemperature = null;
 
 //5-day forecast dates
 
