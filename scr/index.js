@@ -49,6 +49,12 @@ function showForecast(now) {
     `http://openweathermap.org/img/wn/${now.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", now.data.weather[0].description);
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = now.data.weather[0].description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = now.data.main.humidity;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(now.data.wind.speed);
 }
 
 function search(city) {
