@@ -97,18 +97,24 @@ function switchTempF(event) {
   event.preventDefault();
   let link = document.querySelector(".temperature-c");
   link.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+  //switch active class
+  cTemp.classList.remove("active");
+  fTemp.classList.add("active");
 }
-let temp = document.querySelector("#event-link-f");
-temp.addEventListener("click", switchTempF);
+let fTemp = document.querySelector("#event-link-f");
+fTemp.addEventListener("click", switchTempF);
 
 //C
 function switchTempC(event) {
   event.preventDefault();
   let link = document.querySelector(".temperature-c");
   link.innerHTML = Math.round(celsiusTemperature);
+  //switch active class
+  fTemp.classList.remove("active");
+  cTemp.classList.add("active");
 }
-temp = document.querySelector("#event-link-c");
-temp.addEventListener("click", switchTempC);
+let cTemp = document.querySelector("#event-link-c");
+cTemp.addEventListener("click", switchTempC);
 
 let celsiusTemperature = null;
 
