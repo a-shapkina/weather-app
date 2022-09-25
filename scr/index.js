@@ -39,10 +39,10 @@ todayDate.innerHTML = currentDate(now);
 //Search location
 
 function showForecast(now) {
-  let link = document.querySelector(".temperature");
+  let link = document.querySelector("#temperature");
   celsiusTemperature = now.data.main.temp;
   document.querySelector("h1").innerHTML = now.data.name;
-  document.querySelector(".temperature").innerHTML = Math.round(
+  document.querySelector("#temperature").innerHTML = Math.round(
     now.data.main.temp
   );
   let iconElement = document.querySelector("#icon");
@@ -53,10 +53,8 @@ function showForecast(now) {
   iconElement.setAttribute("alt", now.data.weather[0].description);
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = now.data.weather[0].description;
-  let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = now.data.main.humidity;
-  let windElement = document.querySelector("#wind");
-  windElement.innerHTML = Math.round(now.data.wind.speed);
+  let feelsLikeElement = document.querySelector("#feels-like");
+  feelsLikeElement.innerHTML = Math.round(now.data.main.feels_like);
 }
 
 function search(city) {
