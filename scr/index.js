@@ -42,7 +42,7 @@ function showForecast(now) {
   let link = document.querySelector(".temperature");
   celsiusTemperature = now.data.main.temp;
   document.querySelector("h1").innerHTML = now.data.name;
-  document.querySelector(".temperature-c").innerHTML = Math.round(
+  document.querySelector(".temperature").innerHTML = Math.round(
     now.data.main.temp
   );
   let iconElement = document.querySelector("#icon");

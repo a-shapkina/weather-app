@@ -28,25 +28,27 @@
   <body>
     <div class="container p-5">
       <header class="text-center">
-        <form id="search-form">
+        
           <div class="row">
             <div class="col-9">
+              <form class="search-form" id="search-form">
               <input
-                type="search"
-                class="form-control text-dark"
-                placeholder="Enter ZIP, city, or place"
-                autocomplete="off"
-                id="search-text-input"
+              type="search"
+              class="form-control rounded text-dark"
+              placeholder="Enter location"
+              id="search-text-input"
+              autocomplete="off"
               />
+            </form>
             </div>
-                   <div class="col-3">
-            <button type="button" class="btn btn-primary">Your Location</button>
-          </div>
+          
+        
+        <div class="col-3">
+          <button type="button" class="btn btn-primary">Current</button>
         </div>
-      </form>
       </div>
       </header>
-      <main>
+        <main>
         <div class="row">
           <div class="col text-center mt-5 mb-5">
             <div class="card border-0">
@@ -57,12 +59,13 @@
                   <ul>
                     <li><img src="" alt="" id="icon"/></li>
                     <li><span class="today-weather font-weight-bold">
-                      <span class="temperature-c"></span>
+                      <span class="temperature"></span>
                       °C</span
                     ></li>
                     <li id="description"></li>
-                    <li>RH: <span id="humidity"></span>% | Wind: <span id="wind"></span> km/h</li>
                     <li><span class="today-date"></span></li>
+                    <li>RH: <span id="humidity"></span>% | Wind: <span id="wind"></span> km/h</li>
+                    
                   </ul>
                 </p>
               </div>

@@ -32,15 +32,6 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.today-weather .active {
-  color: #000;
-  cursor: default;
-}
-
-.today-weather .active:hover {
-  text-decoration: none;
-}
-
 .today-weather {
   font-size: 30px;
 }
