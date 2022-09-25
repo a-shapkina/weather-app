@@ -28,29 +28,23 @@
   <body>
     <div class="container p-5">
       <header class="text-center">
-        <form class="search-form" id="search-form">
-        <div class="row">
-          <div class="col-9">
-            <div class="input-group">
+        <form id="search-form">
+          <div class="row">
+            <div class="col-9">
               <input
                 type="search"
-                class="form-control rounded text-dark"
+                class="form-control text-dark"
                 placeholder="Enter ZIP, city, or place"
-                id="search-text-input"
                 autocomplete="off"
-              />
-              <input
-                type="submit"
-                value="Forecast"
-                class="btn btn-outline-primary"
+                id="search-text-input"
               />
             </div>
-          </div>
-        </form>
-          <div class="col-3">
+                   <div class="col-3">
             <button type="button" class="btn btn-primary">Your Location</button>
           </div>
         </div>
+      </form>
+      </div>
       </header>
       <main>
         <div class="row">
@@ -58,7 +52,6 @@
             <div class="card border-0">
               <div class="card-body">
                 <h1 class="card-title text-primary mb-6">
-              
                 </h1>
                 <p class="card-text">
                   <ul>
