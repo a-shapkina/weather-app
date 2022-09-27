@@ -1,3 +1,93 @@
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  date = date.getDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[now.getDay()];
+
+  let months = [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+  ];
+  let month = months[now.getMonth()];
+
+  return `${day} <br/> ${month}/${date}`;
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector(".forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col-sm mb-3">
+        <div class="card forecast-card shadow-sm">
+          <div class="card-body text-center">
+            <div class="card-title"></div>
+      
+            <p class="card-text">
+            <ul>
+            <li><span class="forecast-dates">${formatDay(
+              forecastDay.dt
+            )}</span></li>
+            
+            <li><img
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
+            alt=""
+            width="50"
+          /></li>
+
+       <li><span class="forecast-temperatures">
+          <span class="temperature-max"> ${Math.round(
+            forecastDay.temp.day
+          )}° </span> / <span class="temperature-min"> ${Math.round(
+          forecastDay.temp.night
+        )}°</span >
+          </span >
+          </li >
+          <li><span id="wind">${
+            Math.round(forecastDay.wind_speed * 10.0) / 10.0
+          }</span> km/h</li>
+          </ul>
+      </p>
+          </div>
+          </div>
+        </div>
+  `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //Current Date
 function currentDate(now) {
   let hours = now.getHours();
@@ -29,7 +119,7 @@ function currentDate(now) {
   ];
   let month = months[now.getMonth()];
 
-  return `${hours}:${minutes} </br> ${day}, ${month} ${date}`;
+  return `${hours}:${minutes} <br/> ${day}, ${month} ${date}`;
 }
 
 let todayDate = document.querySelector(".today-date");
@@ -38,27 +128,31 @@ todayDate.innerHTML = currentDate(now);
 
 //Search location
 
-function showForecast(now) {
+function showForecast(response) {
   let link = document.querySelector("#temperature");
-  celsiusTemperature = now.data.main.temp;
-  document.querySelector("h1").innerHTML = now.data.name;
+  celsiusTemperature = response.data.main.temp;
+  document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
-    now.data.main.temp
+    response.data.main.temp
   );
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${now.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute("alt", now.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = now.data.weather[0].description;
+  descriptionElement.innerHTML = response.data.weather[0].description;
   let feelsLikeElement = document.querySelector("#feels-like");
-  feelsLikeElement.innerHTML = Math.round(now.data.main.feels_like);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed * 10.0) / 10.0;
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
-  let apiKey = "1c06f739f2cb34e0ad195417aa6a3ffb";
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(url).then(showForecast);
 }
@@ -71,6 +165,8 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+search("New York");
 
 //Current location
 
@@ -88,5 +184,3 @@ function getCurrentPosition() {
 
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
-
-search("New York");
