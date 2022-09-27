@@ -1,12 +1,8 @@
+//5-day forecast
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  date = date.getDate();
-  if (date < 10) {
-    date = `0${date}`;
-  }
-
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[now.getDay()];
+  let day = days[date.getDay()];
 
   let months = [
     "01",
@@ -22,7 +18,12 @@ function formatDay(timestamp) {
     "11",
     "12",
   ];
-  let month = months[now.getMonth()];
+  let month = months[date.getMonth()];
+
+  date = date.getDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
 
   return `${day} <br/> ${month}/${date}`;
 }
@@ -83,7 +84,7 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -152,7 +153,7 @@ function showForecast(response) {
 }
 
 function search(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(url).then(showForecast);
 }
