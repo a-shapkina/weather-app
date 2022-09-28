@@ -30,3 +30,8 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+
+.row {
+  display: flex;
+  justify-content: center;
+}
