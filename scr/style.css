@@ -2,9 +2,6 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-h1 {
-  font-size: 42px;
-}
 a,
 a:hover {
   text-decoration: none;
@@ -23,9 +20,4 @@ li {
 
 li:first-letter {
   text-transform: capitalize;
-}
-
-.today-weather {
-  font-size: 26px;
-  font-weight: bold;
 }
