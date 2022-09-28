@@ -119,7 +119,7 @@ function currentDate(now) {
   ];
   let month = months[now.getMonth()];
 
-  return `${hours}:${minutes} ${day}, ${month} ${date}`;
+  return `${hours}:${minutes}`;
 }
 
 let todayDate = document.querySelector("#today-date");
