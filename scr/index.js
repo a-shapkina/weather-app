@@ -25,7 +25,7 @@ function formatDay(timestamp) {
     date = `0${date}`;
   }
 
-  return `${day} <br/> ${month}/${date}`;
+  return `<b>${day}</b> <br/> <small>${month}/${date}</small>`;
 }
 
 function displayForecast(response) {
@@ -39,16 +39,14 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-        <div class="col-sm mb-3">
-        <div class="card forecast-card shadow-sm">
-          <div class="card-body text-center">
-            <div class="card-title"></div>
-      
+        <div class="col-sm mb-3 ">
+        <div class="card text-center shadow-sm">
+          <div class="card-body text-center">  
             <p class="card-text">
             <ul>
-            <li><span class="forecast-dates">${formatDay(
+            <li><span id="forecast-dates" class="text-muted"><small>${formatDay(
               forecastDay.dt
-            )}</span></li>
+            )}</small></span></li>
             
             <li><img
             src="http://openweathermap.org/img/wn/${
@@ -58,7 +56,7 @@ function displayForecast(response) {
             width="50"
           /></li>
 
-       <li><span class="forecast-temperatures">
+       <li><span id="forecast-temperatures" class="text-dark fw-bolder">
           <span class="temperature-max"> ${Math.round(
             forecastDay.temp.day
           )}° </span> / <span class="temperature-min"> ${Math.round(
@@ -66,9 +64,9 @@ function displayForecast(response) {
         )}°</span >
           </span >
           </li >
-          <li><span id="wind">${
+          <li><span id="forecast-wind" class="text-muted"><small>${
             Math.round(forecastDay.wind_speed * 10.0) / 10.0
-          }</span> km/h</li>
+          } km/h</small></span></li>
           </ul>
       </p>
           </div>
@@ -117,13 +115,14 @@ function currentDate(now) {
     "Sept",
     "Oct",
     "Nov",
+    "Dec",
   ];
   let month = months[now.getMonth()];
 
   return `${hours}:${minutes} <br/> ${day}, ${month} ${date}`;
 }
 
-let todayDate = document.querySelector(".today-date");
+let todayDate = document.querySelector("#today-date");
 let now = new Date();
 todayDate.innerHTML = currentDate(now);
 

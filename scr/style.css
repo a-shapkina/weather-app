@@ -1,5 +1,5 @@
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Roboto Flex", sans-serif;
 }
 
 a,
@@ -20,9 +20,4 @@ li {
 
 li:first-letter {
   text-transform: capitalize;
-}
-
-.form-control,
-.forecast-card {
-  border: 1px solid #d1d1d1;
 }
