@@ -40,7 +40,7 @@ function displayForecast(response) {
         forecastHTML +
         `
         <div class="col-sm mb-3" id="highlight">
-        <div class="card text-center border-light shadow-sm">
+        <div class="card text-center shadow-sm">
              <div class="card-body text-center">  
             <p class="card-text">
             <ul>
