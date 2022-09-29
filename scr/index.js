@@ -39,8 +39,11 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-        <div class="col" id="highlight">
-                   <ul>
+        <div class="col-sm mb-3" id="highlight">
+        <div class="card text-center border-light shadow-sm">
+             <div class="card-body text-center">  
+            <p class="card-text">
+            <ul>
             <li><span id="forecast-dates" class="text-muted"><small>${formatDay(
               forecastDay.dt
             )}</small></span></li>
@@ -65,6 +68,9 @@ function displayForecast(response) {
             Math.round(forecastDay.wind_speed * 10.0) / 10.0
           } km/h</small></span></li>
           </ul>
+      </p>
+          </div>
+          </div>
         </div>
   `;
     }
