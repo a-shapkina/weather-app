@@ -39,9 +39,9 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-        <div class="col-sm mb-3 ">
+        <div class="col-sm mb-3" id="highlight">
         <div class="card text-center shadow-sm">
-          <div class="card-body text-center">  
+             <div class="card-body text-center">  
             <p class="card-text">
             <ul>
             <li><span id="forecast-dates" class="text-muted"><small>${formatDay(
@@ -98,27 +98,6 @@ function currentDate(now) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let date = now.getDate();
-
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[now.getDay()];
-
-  let months = [
-    "Jan",
-    "Feb",
-    "March",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = months[now.getMonth()];
-
   return `${hours}:${minutes}`;
 }
 
